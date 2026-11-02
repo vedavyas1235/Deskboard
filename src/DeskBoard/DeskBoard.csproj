@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <AssemblyName>DeskBoard</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>Sonu</Authors>
+    <Company>DeskBoard</Company>
+    <Product>DeskBoard - Desktop Task Manager</Product>
+    <Description>A native Windows desktop sticky-note style task manager with desktop integration</Description>
+
+    <!-- Application Icon -->
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+
+    <!-- Disable online NuGet vulnerability audit — fully offline builds -->
+    <NuGetAudit>false</NuGetAudit>
+    <!-- Suppress NU1900 network warnings -->
+    <NoWarn>$(NoWarn);NU1900;NU1901;NU1902;NU1903;NU1904</NoWarn>
+
+    <!-- Memory hygiene: use workstation GC (lower overhead than server GC) -->
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <!-- Concurrent GC — frees memory on background thread without stalling UI -->
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+    <!-- GC returns freed heap segments back to OS promptly instead of hoarding -->
+    <GarbageCollectionAdaptationMode>0</GarbageCollectionAdaptationMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.8" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\**" />
+  </ItemGroup>
+
+</Project>
